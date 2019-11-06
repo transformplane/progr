@@ -1,0 +1,63 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+import tkinter
+from tkinter import *
+from tkinter import messagebox
+options = [("Convert decimal number", 1), ("Representation of negative numbers", 2), ("Add or Substract numbers", 3), ("Java", 4)]
+
+
+def select():
+    l = option.get()
+    if l == 1:
+        sel.config(text="Выбран Conver decimal number")
+        syst = StringVar()
+        syst_label = Label(text="Введите систему счисления:")      
+        syst_label.grid(row=0, column=10, sticky="w")
+        syst_entry = Entry(textvariable=syst)
+        syst_entry.grid(row=0,column=15, padx=5, pady=5)  
+        sysf = StringVar()
+        sysf_label = Label(text="Введите итоговую систему счисления:")      
+        sysf_label.grid(row=0, column=16, sticky="w")
+        sysf_entry = Entry(textvariable=name)
+        sysf_entry.grid(row=0,column=22, padx=5, pady=5)  
+       
+    elif l == 2:
+        sel.config(text="Выбран Representation of negative numbers")
+    elif l == 3:
+        sel.config(text="Выбран Add or Substract numbers")
+    elif l == 4:
+        sel.config(text="Выбран Java")
+
+root = Tk()
+root.title("GUI на Python")
+root.geometry("3000x2800")
+
+header = Label(text="Choose option", padx=15, pady=10)
+header.grid(row=0, column=0, sticky=W)
+
+option = IntVar()
+
+row = 1
+for txt, val in options:
+    Radiobutton(text=txt, value=val, variable=option, padx=15, pady=10, command=select)\
+        .grid(row=row, sticky=W)
+    row += 1
+
+sel = Label(padx=15, pady=10)
+sel.grid(row=row, sticky=W)
+ 
+def display_full_name():
+    messagebox.showinfo("ggg", name.get())
+
+name = StringVar()
+name_label = Label(text="Введите число:")      
+name_label.grid(row=0, column=2, sticky="w")
+name_entry = Entry(textvariable=name)
+name_entry.grid(row=0,column=7, padx=5, pady=5)      
+    
+ 
+message_button = Button(text="Click Me", command=display_full_name)
+message_button.grid(row=2,column=1, padx=5, pady=5, sticky="e")
+
+
+root.mainloop()
